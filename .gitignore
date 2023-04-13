@@ -1,5 +1,5 @@
 # Mac OS X files
-.DS_Store
+
 
 # Binaries for programs and plugins
 *.exe
@@ -25,3 +25,7 @@ volumes/
 .vscode/
 .env
 bird_golang_back/vendor/
+bird_golang_back/assets/.DS_Store
+bird_golang_back/build/.DS_Store
+bird_golang_back/assets/private/.DS_Store
+bird_golang_back/web/.DS_Store
