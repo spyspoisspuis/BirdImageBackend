@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+
+  web:
+    image: golang:1.19
+    container_name: bird-golang-service
+    environment:
+      CONNECTION_DBURL: ${DB_USER}:${DB_PASSWORD}@tcp(db:3306)/${DB_NAME}?parseTime=true
+      CONNECTION_REDISURL: redis:6379
+      CONNECTION_REDISSECRET: ${REDIS_SECRET}
+      CORS_TARGET: ${WEB_CORS_TARGET}
+    volumes: 
+      - ./bird_golang_back:/app/bird
+      - ./volumes/app/pdf:/pdf
+    working_dir: /app/bird
+    ports:
+      - 8100:8100
+    depends_on:
+      - db
+      - redis
+    networks:
+      - backbone
+    command: bash -c "go mod vendor && go run main.go"
+  db:
+    container_name: database-service
+    build:
+      context: ./maria-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./volumes/database:/var/lib/mysql
+    ports:
+      - 3106:3306
+    networks:
+      - backbone
+
+  redis:
+    container_name: redis_session
+    image: redis:6.2-alpine
+    expose:
+      - 6379
+    networks:
+      - backbone
+networks:
+  backbone:
+    driver: bridge
