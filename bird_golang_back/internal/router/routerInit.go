@@ -2,7 +2,7 @@ package router
 
 import (
 
-	// "net/http"
+	"net/http"
 	"bird_golang_back/internal/app"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -14,6 +14,8 @@ func RouterEngine() *gin.Engine {
 	r.Use(CORS())
 	r.POST("/update-bird-data",app.UpdateBirdData)
 	r.GET("/get-bird-data",app.GetBirdData)
+	r.StaticFS("/download", http.Dir("/bird_image"))
+
 	return r
 }
 

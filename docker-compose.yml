@@ -12,7 +12,7 @@ services:
       CORS_TARGET: ${WEB_CORS_TARGET}
     volumes: 
       - ./bird_golang_back:/app/bird
-      - ./volumes/app/pdf:/pdf
+      - ./volumes/app/bird_image:/bird_image
     working_dir: /app/bird
     ports:
       - 8100:8100
