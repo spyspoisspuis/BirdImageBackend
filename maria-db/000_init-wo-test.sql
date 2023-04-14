@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS `bird`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bird` (
-  `idx` int(11) NOT NULL,
+  `idx` varchar(100) NOT NULL,
   `name`     varchar(100) NOT NULL,
   `description` varchar(1024) NOT NULL,
   PRIMARY KEY (`idx`)

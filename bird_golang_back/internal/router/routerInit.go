@@ -3,7 +3,7 @@ package router
 import (
 
 	// "net/http"
-
+	"bird_golang_back/internal/app"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 )
@@ -12,8 +12,8 @@ func RouterEngine() *gin.Engine {
 	r := gin.Default()
 
 	r.Use(CORS())
-	// r.POST("/register", authen.Register)
-
+	r.POST("/update-bird-data",app.UpdateBirdData)
+	r.GET("/get-bird-data",app.GetBirdData)
 	return r
 }
 

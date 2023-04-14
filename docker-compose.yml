@@ -23,7 +23,7 @@ services:
       - backbone
     command: bash -c "go mod vendor && go run main.go"
   db:
-    container_name: database-service
+    container_name: bird-database-service
     build:
       context: ./maria-db
     environment:
@@ -34,12 +34,12 @@ services:
     volumes:
       - ./volumes/database:/var/lib/mysql
     ports:
-      - 3106:3306
+      - 3006:3306
     networks:
       - backbone
 
   redis:
-    container_name: redis_session
+    container_name: bird-redis_session
     image: redis:6.2-alpine
     expose:
       - 6379
