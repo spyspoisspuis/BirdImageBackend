@@ -14,8 +14,6 @@ func main() {
 	db.ConnectDB()
 	defer db.DisconnectDB()
 
-	db.ConnectRedis()
-	defer db.DisconnectRedis()
 
 	r := router.RouterEngine()
 
