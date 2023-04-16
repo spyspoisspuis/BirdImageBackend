@@ -21,7 +21,6 @@
 **/vendor/*
 !modules.txt
 
-volumes/
 .vscode/
 .env
 bird_golang_back/vendor/
