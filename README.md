@@ -1,4 +1,3 @@
-# Haus64 Web Server
 
 ## Installation (through docker-compose)
 
@@ -12,8 +11,6 @@ docker-compose up
 ```
 4. If the source code is edited, only restarting the edited container is required. (If the containers are still running)
 ```bash
-# Restarting App Backend
-docker-compose restart app
 # Restarting Web Backend
 docker-compose restart web
 ```
