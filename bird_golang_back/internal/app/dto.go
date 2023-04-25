@@ -5,7 +5,10 @@ type BirdData struct {
 	Name  string `json:"name" binding:"required"`
 	Description string `json:"description" binding:"required"`
 }
-
+type BirdInsertDes struct {
+	Idx 	 	string `json:"index" binding:"required"`
+	Description string `json:"description" binding:"required"`
+}
 
 type BirdSearchKey struct {
 	Key 	 *string `form:"key"`

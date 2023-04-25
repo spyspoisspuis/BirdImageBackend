@@ -19,6 +19,16 @@ services:
     networks:
       - backbone
     command: bash -c "go mod vendor && go run main.go"
+  model:
+    image: pytorch/pytorch
+    container_name: bird-model-service 
+    volumes:
+      - ./bird_model:/app/model
+      - ./volumes/app/uploads:/uploads
+    working_dir: /app/model
+    ports:
+      - 5100:5100
+    command: sh -c "pip install flask flask-cors efficientnet_pytorch torchvision  && python app.py"
   db:
     container_name: bird-database-service
     build:
@@ -34,6 +44,7 @@ services:
       - 3006:3306
     networks:
       - backbone
+    
 
 networks:
   backbone:

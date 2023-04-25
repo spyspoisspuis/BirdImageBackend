@@ -14,6 +14,9 @@ func RouterEngine() *gin.Engine {
 	r.Use(CORS())
 	r.POST("/update-bird-data",app.UpdateBirdData)
 	r.GET("/get-bird-data",app.GetBirdData)
+	r.POST("/update-bird-des",app.UpdateBirdDes)
+
+	
 	r.StaticFS("/download", http.Dir("/bird_image"))
 
 	return r
