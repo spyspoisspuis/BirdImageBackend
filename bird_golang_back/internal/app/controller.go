@@ -12,7 +12,6 @@ func UpdateBirdData (c *gin.Context) {
 		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "Error Bad request"})
 		return
 	}
-
 	err := db.InsertBirdData(information.Idx,information.Name,information.Description)
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
